@@ -30,10 +30,17 @@
         "description": "Type of the storage account created"
       },
       "defaultValue": "Standard_LRS"
+    },
+	  "hostingPlanName": {
+      "type": "string",
+	  "defaultValue": "",
+	  "metadata": {
+        "description": "Type of app service plan name."
+      }
     }
   },
   "variables": {
-    "templatelink": "https://raw.githubusercontent.com/boldbi/azure-arm-template/master/armtemplates/v3.3.88/AzureBlobStorage-BoldBI.json"
+    "templatelink": "https://raw.githubusercontent.com/prasanthudayakumar/azure-arm-template/master/armtemplates/v3.3.88/AzureBlobStorage-BoldBI.json"
   },
   "resources": [
     {
@@ -49,7 +56,8 @@
         "parameters": {
           "WebAppName": { "value": "[parameters('WebAppName')]" },
           "storageAccountName": { "value": "[parameters('storageAccountName')]" },
-          "storageAccountType": { "value": "[parameters('storageAccountType')]" }
+          "storageAccountType": { "value": "[parameters('storageAccountType')]" },
+          "hostingPlanName": { "value": "[parameters('hostingPlanName')]" }
         }
       }
     }

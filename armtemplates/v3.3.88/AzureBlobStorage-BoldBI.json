@@ -25,12 +25,19 @@
         "description": "Type of the storage account created"
       },
       "defaultValue": "Standard_LRS"
+    },
+    "hostingPlanName": {
+      "type": "string",
+	    "defaultValue": "b1",
+	    "metadata": {
+        "description": "Type of app service plan name."
+      }
     }
   },
   "variables": {
     "WebAppSvcPlanWorkerSize": "0",
     "WebAppSvcPlanSKU": "Basic",
-    "WebAppSvcPlanName": "BoldBIAppSvcPlan"
+    "WebAppSvcPlanName": "[parameters('hostingPlanName')]"
   },
   "resources": [
     {
