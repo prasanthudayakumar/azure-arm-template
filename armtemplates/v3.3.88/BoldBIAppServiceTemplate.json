@@ -2,6 +2,13 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "hostingPlanName": {
+      "type": "string",
+      "defaultValue": "BoldBIAppSvcPlan",
+      "metadata": {
+        "description": "App Service Plans are filtered based on your region and operating system selection."
+      }
+    },
     "WebAppName": {
       "type": "string",
       "maxLength": 24,
@@ -30,13 +37,6 @@
         "description": "Type of the storage account created"
       },
       "defaultValue": "Standard_LRS"
-    },
-	  "hostingPlanName": {
-      "type": "string",
-	  "defaultValue": "",
-	  "metadata": {
-        "description": "Type of app service plan name."
-      }
     }
   },
   "variables": {
@@ -55,7 +55,7 @@
         },
         "parameters": {
           "WebAppName": { "value": "[parameters('WebAppName')]" },
-          "storageAccountName": { "value": "[parameters('storageAccountName')]" },
+          "storageAccountName": { "value": "[toLower(parameters('storageAccountName'))]" },
           "storageAccountType": { "value": "[parameters('storageAccountType')]" },
           "hostingPlanName": { "value": "[parameters('hostingPlanName')]" }
         }
